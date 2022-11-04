@@ -20,7 +20,7 @@
             }
         }
         
-        stage('Upload jar To Nexus'){
+        stage('Upload the jar To Nexus'){
             steps {
                 nexusArtifactUploader artifacts: [
                             [
