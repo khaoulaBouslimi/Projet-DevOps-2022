@@ -1,0 +1,24 @@
+version: "3"
+services:
+  mysql-standalone:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=achatdb
+      - MYSQL_PASSWORD=root
+    ports:
+      - 3306:3306
+    restart : on-failure
+  achatproject-docker-container:
+    image: khoukha/projet
+    ports:
+      - 8089:8089
+    restart: unless-stopped
+    environment :
+      -SPRING_DATASOURCE_URL: jdbc:mysql://mysql-standalone:3306/achatdb?autoReconnect=true&failOverReadOnly=false&maxReconnects=10
+      -SPRING_DATASOURCE_USERNAME : root
+      -SPRING_DATASOURCE_PASSWORD : root
+    depends_on:
+      - mysql-standalone
+    links:
+      - mysql-standalone:mysql-standalone
