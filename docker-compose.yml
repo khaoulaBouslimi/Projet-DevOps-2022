@@ -1,5 +1,8 @@
 version: "3"
 services:
+
+  #service 1: definition of mysql database
+  
   mysql-standalone:
     image: mysql:latest
     environment:
@@ -9,6 +12,10 @@ services:
     ports:
       - 3306:3306
     restart : on-failure
+    
+    
+    #service 3: definition of my spring-boot app
+    
   achatproject-docker-container:
     image: khoukha/projet
     ports:
