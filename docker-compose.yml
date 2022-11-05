@@ -16,7 +16,7 @@ services:
     
     #service 2: definition of phpMyAdmin
     phpmyadmin:
-      image: phpmyadmin/phpmyadmin:latest
+      image: phpmyadmin:latest
       container_name: my-php-myadmin
       ports:
         - "8082:8082"
