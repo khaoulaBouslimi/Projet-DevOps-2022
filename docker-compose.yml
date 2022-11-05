@@ -14,6 +14,21 @@ services:
     restart : on-failure
     
     
+    #service 2: definition of phpMyAdmin
+    phpmyadmin:
+      image: phpmyadmin/phpmyadmin:latest
+      container_name: my-php-myadmin
+      ports:
+        - "8082:8082"
+      restart: always
+        
+      depends_on:
+        - mysql-standalone
+      environment:
+        SPRING_DATASOURCE_USERNAME: root
+        SPRING_DATASOURCE_PASSWORD: root
+    
+    
     #service 3: definition of my spring-boot app
     
   achatproject-docker-container:
