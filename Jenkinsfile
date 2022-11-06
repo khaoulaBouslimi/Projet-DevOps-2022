@@ -18,7 +18,7 @@
             steps {
                 echo "You are using the clean command, which will delete all previously compiled Java .class files and resources (like .properties) in your project. Your build will start from a clean slate.";
                     
-                sh 'mvn clean '
+                sh 'mvn clean -DskipTests '
             }
         }
             
