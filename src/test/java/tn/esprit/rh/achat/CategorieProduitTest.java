@@ -87,26 +87,7 @@ public class CategorieProduitTest {
         verify(categorieProduitRepository).save(newCategorieProduit);
     }
 
-    /*
 
-    -----------> must review to see why it doesn't work
-
-    @Test(expected = RuntimeException.class)
-    public void should_throw_exception_when_product_doesnt_exist() {
-        CategorieProduit categorieProduit = new CategorieProduit();
-        categorieProduit.setIdCategorieProduit(89L);
-        categorieProduit.setLibelleCategorie("Test Libelle");
-        categorieProduit.setCodeCategorie("Test Code");
-
-        CategorieProduit newCategorieProduit = new CategorieProduit();
-        newCategorieProduit.setIdCategorieProduit(99L);
-        categorieProduit.setLibelleCategorie("New Test Libelle");
-
-        given(categorieProduitRepository.findById(anyLong())).willReturn(Optional.ofNullable(null));
-        categorieProduitService.updateCategorieProduit(newCategorieProduit);
-    }
-
-     */
     @Test
     public void whenGivenId_shouldReturnProduct_ifFound() {
         CategorieProduit categorieProduit = new CategorieProduit();
