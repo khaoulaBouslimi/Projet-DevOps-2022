@@ -7,9 +7,7 @@
 
         stage('Cloning from GitHub') {
                 steps {
-                    echo "Getting Project from Git";
-                    
-                    
+                    echo "Getting Project from GitHub";
                 }
                 
             }
