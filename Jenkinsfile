@@ -6,7 +6,7 @@ pipeline {
                 steps {
                     echo "Getting Project from Git";
                     
-                    git branch: 'Fournisseur', credentialsId: 'hamzatoken', url: 'https://github.com/khaoulaBouslimi/Projet-DevOps-2022/tree/Fournisseur'
+                    git branch: 'Fournisseur', credentialsId: 'gittoken', url: 'https://github.com/khaoulaBouslimi/Projet-DevOps-2022.git'
                 }
                 
             }
