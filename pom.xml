@@ -93,8 +93,8 @@
 	<distributionManagement>
 		<repository>
 			<id>nexus</id>
-			<name>demoapp-release</name>
-			<url>http://192.168.1.10:8081/repository/demoapp-release/</url>
+			<name>maven-release</name>
+			<url>http://192.168.1.10:8081/repository/maven-releases/</url>
 		</repository>
 	</distributionManagement>
 	<build>
