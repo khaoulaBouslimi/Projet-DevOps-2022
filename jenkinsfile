@@ -52,7 +52,7 @@ pipeline {
             groupId: 'tn.esprit.rh', 
             nexusUrl: '192.168.1.10:8081', 
             nexusVersion: 'nexus3', 
-            protocol: 'http', repository: 'maven-releases', version: '1.0'
+            protocol: 'http', repository: 'achat-release', version: '1.0'
                        
             }
         }
