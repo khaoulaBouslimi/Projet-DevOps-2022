@@ -6,8 +6,7 @@ pipeline {
                 steps {
                     echo "Getting Project from Git";
                     
-                    git branch: 'facture', credentialsId: 'gittoken', url: 'https://github.com/khaoulaBouslimi/Projet-DevOps-2022'
-                }
+                   git branch: 'facture', credentialsId: 'tokengit', url: 'https://github.com/khaoulaBouslimi/Projet-DevOps-2022.git'}
                 
         }
         stage('Clean'){
