@@ -27,12 +27,16 @@ pipeline {
                         -D sonar.login=admin \
                         -D sonar.password=12833907 \
                     """
-                }
+                  }
                     
-            }
+                  }
                 
-        }
-        
+         }
+         stage ("Nexus"){
+			steps{
+			nexusArtifactUploader artifacts: [[artifactId: 'achat', file: 'target/achat-1.0.jar', type: 'jar']], credentialsId: 'nexus', groupId: 'tn.esprit.rh', nexusUrl: '192.168.1.15:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-releases', version: '1.0'
+			}
+		}
     
         
     }
