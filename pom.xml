@@ -92,8 +92,8 @@
 	</dependencies>
 	<distributionManagement>
 		<repository>
-			<id>nexus</id>
-			<name>achat-release</name>
+			<id>deploymentRepo</id>
+			<name>Nexus Saging Repo</name>
 			<url>http://192.168.1.10:8081/repository/maven-releases/</url>
 		</repository>
 	</distributionManagement>
