@@ -2,13 +2,14 @@ pipeline {
     agent any
     
     stages{
-        /*
+        
         stage(' GIT'){
          steps {
             echo 'Pulling...';
             git branch: 'Categry_Product_Test',credentialsId: 'giittoken', url: 'https://github.com/khaoulaBouslimi/Projet-DevOps-2022.git'
                }
         }
+	/*
         stage('Clean'){
             steps {
     
