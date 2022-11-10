@@ -20,6 +20,11 @@ pipeline {
                 sh 'mvn compile'  
             }
         }
+        stage('Test'){
+            steps {
+                   sh 'mvn test'
+                }
+        }
         stage('SonarQube Analysis'){
             steps {
                 withSonarQubeEnv(credentialsId: 'sonartoken',installationName: 'sonarqube') {
