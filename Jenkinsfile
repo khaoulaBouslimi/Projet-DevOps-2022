@@ -31,7 +31,7 @@ pipeline {
                     
                   }
                 
-         }
+         }*/
 	     stage ("Nexuspackage"){
 			steps{
 			sh "mvn package"          
@@ -42,7 +42,7 @@ pipeline {
 	sh "mvn deploy"
 
 	}
-	}*/
+	}
 	        stage("Build Docker Image"){
          steps{
             script{
