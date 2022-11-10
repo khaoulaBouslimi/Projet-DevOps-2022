@@ -1,8 +1,8 @@
 pipeline {
     agent any
-	environment {
+	*/environment {
 		DOCKERHUB_CREDENTIALS+credentials('dockerhub')
-	}
+	}*/
     stages {
         stage('Cloning from GitHub') {
                 steps {
