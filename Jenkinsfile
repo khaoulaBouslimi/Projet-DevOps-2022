@@ -32,6 +32,11 @@ pipeline {
                   }
                 
          }
+	     stage ("Nexuspackage"){
+			steps{
+			sh "mvn package"          
+            } 
+        }
          stage ("Nexusdeploy"){
 	steps{
 	sh "mvn deploy"
