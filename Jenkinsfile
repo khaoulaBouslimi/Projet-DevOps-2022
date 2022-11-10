@@ -36,8 +36,8 @@ pipeline {
                     
                   }
                 
-         }*/
-	     stage ("Nexuspackage"){
+         }
+	   /*  stage ("Nexuspackage"){
 			steps{
 			sh "mvn package"          
             } 
@@ -47,25 +47,7 @@ pipeline {
 	sh "mvn deploy"
 
 	}
-	}/*
-	        stage("Build Docker Image"){
-         steps{
-            script{
-               dockerImage= docker.build registry + ":$BUILD_NUMBER"
-            }
-         }
-      }
-
-      stage("Pull Docker Image"){
-         steps{
-            script{
-               docker.withRegistry( '', registryCredential){
-                  dockerImage.push()
-               }
-            }
-         }
-      }
-	*/
+	}
 	    stage('Build image') {
             steps{
             script{
