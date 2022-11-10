@@ -93,8 +93,8 @@
 		<!-- Deploy to Nexus -->
 	<distributionManagement>
 		<repository>
-			<id>Projet-DevOps-2022</id>
-			<name>Nexus Repository</name>
+			<id>deploymentRepo</id>
+			<name>Nexus Saging Repo</name>
 			<url>http://192.168.1.109:8081/repository/maven-releases/</url>
 		</repository>
 	</distributionManagement>
