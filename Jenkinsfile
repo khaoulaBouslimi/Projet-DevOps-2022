@@ -18,7 +18,7 @@ pipeline {
             steps {
                 sh 'mvn compile -DskipTests'  
             }
-        }
+        }/*
         stage('SonarQube Analysis'){
             steps {
                 withSonarQubeEnv(credentialsId: 'sonartoken',installationName: 'sonarqube') {
@@ -42,7 +42,7 @@ pipeline {
 	sh "mvn deploy"
 
 	}
-	}
+	}*/
 	        stage("Build Docker Image"){
          steps{
             script{
