@@ -17,7 +17,7 @@ pipeline {
         }
         stage('Compile'){
             steps {
-                sh 'mvn compile -DskipTests'  
+                sh 'mvn compile'  
             }
         }
         stage('SonarQube Analysis'){
