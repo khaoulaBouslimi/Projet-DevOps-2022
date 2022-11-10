@@ -44,7 +44,7 @@ pipeline {
 	sh "mvn deploy"
 
 	}
-	}
+	}/*
 	        stage("Build Docker Image"){
          steps{
             script{
@@ -62,8 +62,28 @@ pipeline {
             }
          }
       }
-	
-    
+	*/
+	    stage('Build image') {
+            steps{
+            script{
+            dockerImage = docker.build("souissimouhanned/devops:latest")
+            }
+            }
+        }
+        stage('Dockerhub Login') {
+
+			steps {
+				sh 'docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
+			}
+		}
+        
+        
+        stage('Push') {
+
+			steps {
+				sh 'docker push souissimouhanned/devops:latest'
+			}
+	}
         
     }
 }
