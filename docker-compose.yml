@@ -3,7 +3,7 @@ version: '2'
 services:
  mysqlContainer:
   image: mysql:8
-  container_name: mysqlContainer
+  container_name: mysqlContainer2
   restart: unless-stopped
   environment:
   - MYSQL_ROOT_PASSWORD=root
