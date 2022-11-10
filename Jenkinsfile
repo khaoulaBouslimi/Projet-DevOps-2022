@@ -20,11 +20,7 @@ pipeline {
                 sh 'mvn compile -DskipTests'  
             }
         }
-        stage('build'){
-            steps {
-                sh 'mvn clean package -DskipTests'
-            }
-        } 
+        
         stage('JUnit and Mockito Test'){
              steps{
 
@@ -68,6 +64,11 @@ pipeline {
                         version: '1.0'
             }
         }
+        stage('packaging'){
+            steps {
+                sh 'mvn clean package -DskipTests'
+            }
+        } 
         stage('Building our image'){
          steps{
             script{
