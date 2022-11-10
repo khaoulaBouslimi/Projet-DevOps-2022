@@ -1,4 +1,7 @@
 pipeline {
+	environment {
+		DOCKERHUB_CREDENTIALS+credentials('dockerhub')
+	}
     agent any
 	/*environment {
 		DOCKERHUB_CREDENTIALS+credentials('dockerhub')
