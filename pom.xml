@@ -93,7 +93,7 @@
 	</dependencies>
 <distributionManagement>
 		<repository>
-			<id>deploymentRepo</id>
+			<id>Projet-DevOps-2022</id>
 			<name>Nexus Repository</name>
 			<url>http://192.168.1.15:8081/repository/maven-releases/</url>
 		</repository>
