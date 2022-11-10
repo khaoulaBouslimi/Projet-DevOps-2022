@@ -45,30 +45,18 @@ pipeline {
                 
         } */
         
-        stage('Nexus'){
-            steps {
-                nexusArtifactUploader artifacts: [
-                            [
-                                artifactId: 'achat', 
-                                classifier: '', 
-                                file: 'target/achat-1.0.jar', 
-                                type: 'jar'
-                            ]
-                        ], 
-                        credentialsId: 'nexus', 
-                        groupId: 'tn.esprit.rh', 
-                        nexusUrl: '192.168.1.109:8081', 
-                        nexusVersion: 'nexus3', 
-                        protocol: 'http', 
-                        repository: 'Achat-release1', 
-                        version: '1.0'
-            }
+        stage ("Nexuspackage"){
+			steps{
+			sh "mvn package"          
+            } 
         }
-        stage('packaging'){
-            steps {
-                sh 'mvn clean package -DskipTests'
-            }
-        } 
+         stage ("Nexusdeploy"){
+	steps{
+	sh "mvn deploy"
+
+	}
+	}
+       
         stage('Building our image'){
          steps{
             script{
