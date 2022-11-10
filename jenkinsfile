@@ -9,7 +9,7 @@ pipeline {
             git branch: 'Categry_Product_Test',credentialsId: 'giittoken', url: 'https://github.com/khaoulaBouslimi/Projet-DevOps-2022.git'
                }
         }
-	
+	/*
         stage('Clean'){
             steps {
     
@@ -41,6 +41,7 @@ pipeline {
             
         }
     }    
+    */
     
         stage ("Nexuspackage"){
 			steps{
@@ -57,5 +58,23 @@ pipeline {
 
 	}
 	}
+	stage("Build Docker Image"){
+         steps{
+            script{
+               dockerImage= docker.build registry + ":$BUILD_NUMBER"
+            }
+         }
+      }
+
+      stage("Pull Docker Image"){
+         steps{
+            script{
+               docker.withRegistry( '', registryCredential){
+                  dockerImage.push()
+               }
+            }
+         }
+      }
+
     }
 }
