@@ -15,12 +15,6 @@ pipeline {
                    sh 'mvn clean'
                 }
         }
-        stage('Test'){
-            steps {
-                sh 'mvn test'
-            }
-        
-        }
         stage('Compile'){
             steps {
                 sh 'mvn compile -DskipTests'  
@@ -31,6 +25,13 @@ pipeline {
                 sh 'mvn clean package -DskipTests'
             }
         } 
+        stage('JUnit and Mockito Test'){
+             steps{
+
+                sh 'mvn --batch-mode test'
+             }
+
+         }
         
         stage('SonarQube Analysis'){
             steps {
