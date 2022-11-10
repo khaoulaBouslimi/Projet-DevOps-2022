@@ -1,4 +1,7 @@
 pipeline {
+	environment {
+		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
+	}
     agent any
     
     stages {
@@ -57,29 +60,27 @@ pipeline {
 	}
 	}
        
-        stage('Building our image'){
-         steps{
+        stage('Build image') {
+            steps{
             script{
-               dockerImage= docker.build registry + ":$BUILD_NUMBER"
+            dockerImage = docker.build("mizoh/achat:latest")
             }
-         }
-      }
-
-      stage('Deploy our image'){
-         steps{
-            script{
-               docker.withRegistry( '', registryCredential){
-                  dockerImage.push()
-               }
             }
-         }
-      }
+        }
+        stage('Dockerhub Login') {
 
-      stage('cleaning up'){
-         steps{
-            sh "docker rmi $registry:$BUILD_NUMBER"
-         }
-      }
+			steps {
+				sh 'docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
+			}
+		}
+        
+        
+        stage('Push') {
+
+			steps {
+				sh 'docker push mizoh/achat:latest'
+			}
+	}
         
     }
 }
