@@ -89,13 +89,7 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<distributionManagement>
-		<repository>
-			<id>Projet-DevOps-2022</id>
-			<name>Nexus Repository</name>
-			<url>http://192.168.1.15:8081/repository/maven-releases/</url>
-		</repository>
-	</distributionManagement>
+		
 	</dependencies>
 
 	<build>
