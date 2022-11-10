@@ -25,6 +25,23 @@
                 sh 'mvn compile -DskipTests'  
             }
         }
+       
+        stage('SonarQube Analysis'){
+            steps {
+                withSonarQubeEnv(credentialsId: 'jenkins-soonar',installationName: 'sonarqube') {
+                    sh """
+                        mvn sonar:sonar \
+                        -D sonar.login=admin \
+                        -D sonar.password=sonar \
+                        -D sonar.projectKey=org.springframework.boot \
+                        -D sonar.host.url=http://192.168.1.15:9000  
+                        
+                    """
+                }
+                    
+            }
+                
+        }
 
 
               
