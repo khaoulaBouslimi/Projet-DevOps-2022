@@ -1,6 +1,18 @@
 # docker-compose.yml
 version: '2'
 services:
+ mysqlContainer:
+  image: mysql:8
+  container_name: mysqlContainer
+  restart: unless-stopped
+  environment:
+  - MYSQL_ROOT_PASSWORD=root
+  - MYSQL_DATABASE=achatdb
+  - MYSQL_PASSWORD_=root
+  ports:
+  - "3306:3306"
+  volumes:
+  - '/home/mysql/data:/var/lib/mysql'
  sonarqube:
   image: sonarqube:8.9.7-community
   ports:
