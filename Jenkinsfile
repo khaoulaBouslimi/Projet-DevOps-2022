@@ -47,12 +47,12 @@ pipeline {
         
         stage ("Nexuspackage"){
 			steps{
-			sh "mvn package"          
+			sh "mvn package -DskipTests"          
             } 
         }
          stage ("Nexusdeploy"){
 	steps{
-	sh "mvn deploy"
+	sh "mvn deploy -DskipTests"
 
 	}
 	}
