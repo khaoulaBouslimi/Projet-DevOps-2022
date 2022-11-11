@@ -45,7 +45,7 @@ environment {
         }
     }    
     
-    
+    /*
         stage ("Nexuspackage"){
 			steps{
 			sh "mvn package"
@@ -55,6 +55,7 @@ environment {
             }
 	   
         }
+	
 	stage ("Nexusdeploy"){
 	steps{
 	sh "mvn deploy"
@@ -83,6 +84,6 @@ environment {
 			}
 	}
 
-
+*/
     }
 }
