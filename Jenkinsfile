@@ -43,8 +43,7 @@
             post{
                 success{
                     jacoco()
-                    junit 'target/surefire-reports/**/*.xml'
-                    archiveArtifacts 'target/*.jar'
+
                 }
             }
         }   
