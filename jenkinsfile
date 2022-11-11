@@ -20,7 +20,7 @@ environment {
                }
             
         }
-        /*
+        
         stage('Compile'){
             steps {
     
@@ -45,7 +45,7 @@ environment {
         }
     }    
     
-    */
+    
         stage ("Nexuspackage"){
 			steps{
 			sh "mvn package"
