@@ -87,7 +87,7 @@
             }
         }
 
-        stage('DockerHub'){
+        stage('Docker Hub'){
             steps {
                 withCredentials([string(credentialsId: 'dockerhubId', variable: 'dockerhubpwd')]) {
                     sh 'docker login -u khoukha -p ${dockerhubpwd}'
@@ -96,7 +96,7 @@
             }
         }
 
-       stage('DockerCompose') {
+       stage('Docker Compose') {
             steps {
                 sh 'docker-compose up -d'
             }
