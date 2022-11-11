@@ -35,7 +35,7 @@
             }
             post{
                 always{
-                    junit healthScaleFactor: 0.5, testResults: '**/*.xml'
+                    junit testResults: '**/*.xml'
                 }
             }		
         }  
