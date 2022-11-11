@@ -35,7 +35,7 @@
             }
             post{
                 always{
-                    testNG reportFilenamePattern: '**/*.xml', showFailedBuilds: true
+                    junit allowEmptyResults: true, testResults: '**/*.xml'
                 }
             }		
         }  
