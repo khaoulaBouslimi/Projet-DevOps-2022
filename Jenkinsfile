@@ -31,7 +31,7 @@ pipeline {
              }
 
          }
-       */
+       
         stage('SonarQube Analysis'){
             steps {
                 withSonarQubeEnv(credentialsId: 'sonartoken',installationName: 'sonarqube') {
@@ -47,7 +47,7 @@ pipeline {
             }
                 
         } 
-        
+        */
         stage ("Nexuspackage"){
 			steps{
 			sh "mvn package -DskipTests"          
