@@ -28,6 +28,11 @@
             steps{
                 sh 'mvn test'
             }	
+            post{
+                always{
+                    junit testResults: '**/*.xml'
+                }
+            }			
         }  
         
         stage('Build'){
