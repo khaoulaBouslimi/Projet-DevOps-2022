@@ -23,7 +23,7 @@ pipeline {
                 sh 'mvn compile -DskipTests'  
             }
         }
-       /* 
+       
         stage('JUnit and Mockito Test'){
              steps{
 
@@ -31,7 +31,7 @@ pipeline {
              }
 
          }
-       */
+       
         stage('SonarQube Analysis'){
             steps {
                 withSonarQubeEnv(credentialsId: 'sonartoken',installationName: 'sonarqube') {
