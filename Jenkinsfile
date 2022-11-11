@@ -23,12 +23,22 @@
 
        stage('Docker Compose') {
             steps {
-                sh 'docker-compose up -d'
+                sh 'docker-compose up'
+                sh 'docker-compose ps'
             }
         }
 	    
 	    
     }
+	    
+    post{
+        always{
+            sh 'docker-compose down'
+            sh 'docker-compose ps'
+        }
+    }	    
+	    
+	    
 }
 
             
