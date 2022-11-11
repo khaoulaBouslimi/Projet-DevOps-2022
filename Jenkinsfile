@@ -35,7 +35,7 @@
             }
             post{
                 always{
-                    junit testResults: '**/*.xml'
+                    junit '**/*.xml'
                 }
             }		
         }  
