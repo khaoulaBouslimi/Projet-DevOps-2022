@@ -38,7 +38,7 @@ environment {
         stage('Sonar'){
             steps {
             withSonarQubeEnv( installationName: 'sonar'){
-            sh 'mvn sonar:sonar -Dsonar.login=1bd9c7b31d8efa3ac014c20c360b77b1204cc960'
+            sh 'mvn sonar:sonar -Dsonar.login=802f1a3711d5244481775b3daab60917d686bb53'
                
             }
             
