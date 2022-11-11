@@ -1,13 +1,13 @@
 version: '3.7'
 services:
       
-  ci-db:
-    container_name: ci-db
+  devops-db:
+    container_name: devops-db
     image: mysql:8.0
     networks:
-      - ci-network
+      - devops-network
     environment:
-      - MYSQL_USER=new_user
+      - MYSQL_USER=root
       - MYSQL_PASSWORD=password
       - MYSQL_DATABASE=achatdb
       - MYSQL_ROOT_PASSWORD=root
@@ -17,27 +17,27 @@ services:
       - "3306:3306"
     restart: always
 
-  ci-app:
+  devops-app:
     build:
       context: .
-    container_name: ci-spring
-    image: amineturki/ci:latest
+    container_name: devops-spring
+    image: azizbenkbaier/devops:latest
     ports:
       - "8089:8089"
     networks:
-      - ci-network
+      - devops-network
     depends_on:
-      - ci-db
+      - devops-db
     environment:
-      - MYSQL_HOST=ci-db
+      - MYSQL_HOST=devops-db
       - MYSQL_USERNAME=new_user
       - MYSQL_PASSWORD=password
       - MYSQL_DATABASE=achatdb
       - MYSQL_PORT=3306
       
 networks:
-  ci-network:
-    name: ci-network
+  devops-network:
+    name: devops-network
 
 volumes:
   dbvol:
