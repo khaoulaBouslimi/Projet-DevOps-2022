@@ -98,7 +98,7 @@
             steps {
                 withCredentials([string(credentialsId: 'dockerhubId', variable: 'dockerhubpwd')]) {
                     sh 'docker login -u khoukha -p ${dockerhubpwd}'
-                    sh 'docker push khoukha/DevOpsProject'
+                    sh 'docker push khoukha/devopsproject'
                 }
             }
         }
