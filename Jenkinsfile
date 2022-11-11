@@ -23,22 +23,21 @@
    
         stage('Compile'){
             steps {
-                sh 'mvn compile -DskipTests'  
+                sh 'mvn compile '  
             }
         }
         
 
-        
-        stage('JUNIT / Mockito '){
+        stage('JUNIT & Mockito '){
             steps{
                 echo"With this command, one can run project testing steps.";
                 sh 'mvn test'
             }
         }  
         
-        stage('build'){
+        stage('Build'){
             steps {
-                sh 'mvn clean package -DskipTests'
+                sh 'mvn clean package '
             }
             post{
                 success{
@@ -67,7 +66,7 @@
 
 
 
-        stage('Upload the jar To Nexus'){
+        stage('Nexus Stage'){
             steps {
                 nexusArtifactUploader artifacts: [
                             [
@@ -88,7 +87,26 @@
         }
         
   
+        stage('Docker image'){
+            steps {
+                 sh 'docker build -t khoukha/achat-spring .'
+            }
+        }
 
+        stage('pushing to DockerHub'){
+            steps {
+                withCredentials([string(credentialsId: 'dockerhubId', variable: 'dockerhubpwd')]) {
+                    sh 'docker login -u khoukha -p ${dockerhubpwd}'
+                    sh 'docker push khoukha/achat-spring'
+                }
+            }
+        }
+
+       stage('DockerCompose') {
+                       steps {
+				            sh 'docker-compose up -d'
+                        }
+        }
 
     }
 }
