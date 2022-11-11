@@ -36,13 +36,18 @@
             }
         }  
         
-        stage('Test & Jacoco Static Analysis') {
-            stepes{
-            junit 'target/surefire-reports/**/*.xml'
-            jacoco()
-            
+        stage('build'){
+            steps {
+                sh 'mvn clean package -DskipTests'
             }
-        }    
+            post{
+                success{
+                    jacoco()
+                    junit 'target/surefire-reports/**/*.xml'
+                    archiveArtifacts 'target/*.jar'
+                }
+            }
+        }   
         
 
 
