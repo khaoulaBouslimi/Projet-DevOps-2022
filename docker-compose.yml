@@ -1,9 +1,9 @@
 # docker-compose.yml
 version: '2'
 services:
- mysql-standalone:
+ mysql-standalonee:
   image: mysql:8
-  container_name: mysql-standalone
+  container_name: mysql-standalonee
   restart: unless-stopped
   environment:
   - MYSQL_ROOT_PASSWORD=root
@@ -11,36 +11,36 @@ services:
   - MYSQL_PASSWORD_=root
   - MYSQL_USERNAME=root
   ports:
-  - "3306:3306"
+  - "3307:3306"
   volumes:
   - 'my-db:/var/lib/mysql'
  spring_app:
-  image: khoukha/achat-spring
+  image: khoukha/achat
   container_name: aachatproject
   ports:
-  - "8089:8089"
+  - "8088:8088"
   restart: unless-stopped
   environment:
-  - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-standalone:3306/achatdb?autoReconnect=true&failOverReadOnly=false&maxReconnects=10
+  - SPRING_DATASOURCE_URL=jdbc:mysql://mysql-standalonee:3306/achatdb?autoReconnect=true&failOverReadOnly=false&maxReconnects=10
   - SPRING_DATASOURCE_USERNAME=root
   - SPRING_DATASOURCE_PASSWORD=root
   depends_on:
-  - mysql-standalone
+  - mysql-standalonee
   links:
-  - mysql-standalone:mysql-standalone
- sonarqube:
+  - mysql-standalonee:mysql-standalonee
+ sonarqubee:
   image: sonarqube:8.9.7-community
   ports:
-  - "9000:9000"
+  - "9009:9009"
   - "9092:9092"
   volumes:
   - 'SonarQube_data:/opt/SonarQube/data'
   - 'SonarQube_extensions:/opt/SonarQube/extensions'
   - 'SonarQube_logs:/opt/SonarQube/logs'
- nexus:
+ nexuss:
   image: sonatype/nexus3
   ports:
-  - "8081:8081"
+  - "8087:8087"
   volumes:
   - 'nexus-data:/nexus-data'
 volumes:
