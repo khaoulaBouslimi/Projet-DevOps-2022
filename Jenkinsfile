@@ -37,8 +37,11 @@
         }  
         
         stage('Test & Jacoco Static Analysis') {
+            stepes{
             junit 'target/surefire-reports/**/*.xml'
             jacoco()
+            
+            }
         }    
         
 
