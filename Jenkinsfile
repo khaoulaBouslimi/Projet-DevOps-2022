@@ -35,7 +35,7 @@
             }
             post{
                 always{
-                    junit '**/*.xml'
+                    junit allowEmptyResults: true, testResults: '\'**/*.xml\''
                 }
             }		
         }  
