@@ -3,9 +3,6 @@ pipeline {
 		DOCKERHUB_CREDENTIALS=credentials('dockerhub')
 	}
     agent any
-	/*environment {
-		DOCKERHUB_CREDENTIALS+credentials('dockerhub')
-	}*/
     stages {
         stage('Cloning from GitHub') {
                 steps {
@@ -24,7 +21,7 @@ pipeline {
                 sh 'mvn compile -DskipTests'  
             }
         }
-        stage('SonarQube Analysis'){
+      /*  stage('SonarQube Analysis'){
             steps {
                 withSonarQubeEnv(credentialsId: 'sonartoken',installationName: 'sonarqube') {
                     sh """
@@ -36,8 +33,8 @@ pipeline {
                     
                   }
                 
-         }
-	   /*  stage ("Nexuspackage"){
+         }*/
+	     stage ("Nexuspackage"){
 			steps{
 			sh "mvn package"          
             } 
@@ -69,7 +66,7 @@ pipeline {
 				sh 'docker push souissimouhanned/devops:latest'
 			}
 	}
-        */
+        
     }
 }
 
