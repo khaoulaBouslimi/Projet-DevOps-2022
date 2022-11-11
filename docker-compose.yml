@@ -28,24 +28,6 @@ services:
   - mysql-standalonee
   links:
   - mysql-standalonee:mysql-standalonee
- sonarqubee:
-  image: sonarqube:8.9.7-community
-  ports:
-  - "9009:9009"
-  - "9093:9093"
-  volumes:
-  - 'SonarQube_data:/opt/SonarQube/data'
-  - 'SonarQube_extensions:/opt/SonarQube/extensions'
-  - 'SonarQube_logs:/opt/SonarQube/logs'
- nexuss:
-  image: sonatype/nexus3
-  ports:
-  - "8087:8087"
-  volumes:
-  - 'nexus-data:/nexus-data'
 volumes:
-  SonarQube_data:
-  SonarQube_extensions:
-  SonarQube_logs:
-  nexus-data:
+
   my-db:
