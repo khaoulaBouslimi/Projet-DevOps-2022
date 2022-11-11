@@ -33,7 +33,7 @@
             }
             post{
                 always{
-                    junit healthScaleFactor: 0.5, testResults: '**/*.xml'
+                    junit testResults: '**/*.xml'
                 }
             }		
         }  
@@ -41,12 +41,6 @@
         stage('Build'){
             steps {
                 sh 'mvn clean package '
-            }
-            post{
-                success{
-                    jacoco()
-
-                }
             }
         }   
         
@@ -102,7 +96,11 @@
             }
         }
 
-
+       stage('DockerCompose') {
+            steps {
+                sh 'docker-compose up -d'
+            }
+        }
 	    
 	    
     }
