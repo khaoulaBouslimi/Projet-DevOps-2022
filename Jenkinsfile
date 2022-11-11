@@ -90,6 +90,11 @@ pipeline {
                                  }
                            }
           }
+	    stage('Email') {
+            steps {
+                mail bcc: '', body: 'It\'s jenkins ,Your job got built successfully..', cc: '', from: '', replyTo: '', subject: 'Jenkins Job', to: 'aziz.benkbaier@esprit.tn'
+            }
+        }
        
     }
 }
