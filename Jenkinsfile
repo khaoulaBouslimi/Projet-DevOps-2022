@@ -35,7 +35,7 @@
             }
             post{
                 always{
-                    testResults: 'target/surefire-reports/*.xml'
+                    testNG reportFilenamePattern: '**/*.xml', showFailedBuilds: true
                 }
             }		
         }  
