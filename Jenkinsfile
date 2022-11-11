@@ -35,7 +35,7 @@
             }
             post{
                 always{
-                    junit allowEmptyResults: true, testResults: '**/*.xml'
+                    junit healthScaleFactor: 0.5, testResults: '**/*.xml'
                 }
             }		
         }  
