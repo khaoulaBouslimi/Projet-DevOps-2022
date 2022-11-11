@@ -48,7 +48,46 @@
             }
         }   
         
+        stage('SonarQube Analysis'){
+            steps {
+                withSonarQubeEnv(credentialsId: 'jenkins-soonar',installationName: 'sonarqube') {
+                    sh """
+                        mvn sonar:sonar \
+                        -D sonar.projectKey=org.springframework.boot \
+                        -D sonar.host.url=http://192.168.1.20:9000  \
+                        -D sonar.login=admin \
+                        -D sonar.password=sonar \
+                        -D sonar.projectBaseDir=C:/Users/khaoula/Desktop/clone/Projet-DevOps-2022
+                    """
+                }
+                    
+            }
+                
+        }
 
+
+
+        stage('Upload the jar To Nexus'){
+            steps {
+                nexusArtifactUploader artifacts: [
+                            [
+                                artifactId: 'achat', 
+                                classifier: '', 
+                                file: 'target/achat-1.0.jar', 
+                                type: 'jar'
+                            ]
+                        ], 
+                        credentialsId: 'nexus', 
+                        groupId: 'tn.esprit.rh', 
+                        nexusUrl: '192.168.1.20:8081', 
+                        nexusVersion: 'nexus3', 
+                        protocol: 'http', 
+                        repository: 'Achat-release', 
+                        version: '1.0'
+            }
+        }
+        
+  
 
 
     }
