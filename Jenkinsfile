@@ -59,7 +59,6 @@
                         -D sonar.host.url=http://192.168.1.20:9000  \
                         -D sonar.login=admin \
                         -D sonar.password=sonar \
-                        -D sonar.projectBaseDir=C:/Users/khaoula/Desktop/clone/Projet-DevOps-2022
                     """
                 }
                     
@@ -90,7 +89,7 @@
   
         stage('Docker image'){
             steps {
-                 sh 'docker build -t khoukha/DevOpsProject .'
+                 sh 'docker build -t khoukha/devopsproject .'
             }
         }
 
