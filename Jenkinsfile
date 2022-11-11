@@ -13,7 +13,7 @@
         }
     
      
-        stage('Clean'){
+        stage('Cleaning'){
             steps {
                 echo "You are using the clean command, which will delete all previously compiled Java .class files and resources (like .properties) in your project. Your build will start from a clean slate.";
                 sh 'mvn clean '
@@ -35,7 +35,7 @@
             }
         }  
         
-        stage('Build'){
+        stage('Building'){
             steps {
                 sh 'mvn clean package '
             }
@@ -66,7 +66,7 @@
 
 
 
-        stage('Nexus Stage'){
+        stage('Nexus'){
             steps {
                 nexusArtifactUploader artifacts: [
                             [
@@ -93,7 +93,7 @@
             }
         }
 
-        stage('pushing to DockerHub'){
+        stage('DockerHub'){
             steps {
                 withCredentials([string(credentialsId: 'dockerhubId', variable: 'dockerhubpwd')]) {
                     sh 'docker login -u khoukha -p ${dockerhubpwd}'
@@ -102,7 +102,7 @@
             }
         }
 
-       stage('DockerCompose') {
+       stage('Docker-Compose') {
             steps {
 		sh 'docker-compose up -d'
             }
