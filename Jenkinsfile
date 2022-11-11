@@ -21,7 +21,7 @@ pipeline {
                 sh 'mvn compile -DskipTests'  
             }
         }
-      /*  stage('SonarQube Analysis'){
+        stage('SonarQube Analysis'){
             steps {
                 withSonarQubeEnv(credentialsId: 'sonartoken',installationName: 'sonarqube') {
                     sh """
@@ -33,7 +33,7 @@ pipeline {
                     
                   }
                 
-         }*/
+         }
 	     stage ("Nexuspackage"){
 			steps{
 			sh "mvn package"          
