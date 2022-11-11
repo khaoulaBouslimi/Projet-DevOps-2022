@@ -1,4 +1,4 @@
-package tn.esprit.rh.achat.stock;
+/*package tn.esprit.rh.achat.stock;
 import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -45,4 +45,4 @@ public void testDeleteStock() {
 stockService.deleteStock(1L);
 assertNull(stockService.retrieveStock(1L));
 }
-}
+}*/
