@@ -11,7 +11,8 @@
                 git branch: 'khaoula', credentialsId: 'MyGitHubCredential', url: 'https://github.com/khaoulaBouslimi/Projet-DevOps-2022.git'
             }
         }
-   
+    
+     
         stage('Clean'){
             steps {
                 sh 'mvn clean '
@@ -28,18 +29,7 @@
             steps{
                 sh 'mvn test'
             }	
-            post{
-                always{
-                    junit testResults: '**/*.xml'
-                }
-            }			
         }  
-        
-        stage('Build'){
-            steps {
-                sh 'mvn clean package '
-            }
-        }   
         
         stage('SonarQube Analysis'){
             steps {
@@ -56,6 +46,12 @@
             }
                 
         }
+
+        stage('Build'){
+            steps {
+                sh 'mvn clean package '
+            }
+        }   
 
         stage('Nexus'){
             steps {
@@ -93,9 +89,10 @@
             }
         }   
 
+
        stage('Docker Compose') {
             steps {
-                sh 'docker-compose up -d '
+                sh 'docker-compose up -d'
                 sh 'docker-compose ps'
             }
         }
@@ -105,7 +102,7 @@
 	    
     post{
         always{
-            sh 'docker-compose down --remove-orphans -v'
+            sh 'docker-compose down'
             sh 'docker-compose ps'
         }
     }	    
