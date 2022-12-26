@@ -35,17 +35,18 @@ environment {
                }
             
         }
+  /*
         stage('Sonar'){
             steps {
             withSonarQubeEnv( installationName: 'sonar'){
             sh 'mvn sonar:sonar -Dsonar.login=802f1a3711d5244481775b3daab60917d686bb53'
                
             }
-            
+          */  
         }
     }    
     
-    /*
+  
         stage ("Nexuspackage"){
 			steps{
 			sh "mvn package"
@@ -84,6 +85,6 @@ environment {
 			}
 	}
 
-*/
+
     }
 }
