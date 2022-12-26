@@ -67,7 +67,7 @@ environment {
 		    stage('Build image') {
             steps{
             script{
-            dockerImage = docker.build("amineouerghi/devops:latest")
+            dockerImage = docker.build("ghaithbalti/devops:latest")
             }
             }
         }
@@ -82,7 +82,7 @@ environment {
         stage('Push') {
 
 			steps {
-				sh 'docker push amineouerghi/devops:latest'
+				sh 'docker push ghaithbalti/devops:latest'
 			}
 	}
 
